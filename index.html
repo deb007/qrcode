@@ -78,11 +78,11 @@
            last = txt;
            
             $.ajax({
-                url: "test.html?text="+txt,
+                url: "https://openwhisk.ng.bluemix.net/api/v1/web/aich30%40gmail.com_main/default/qrgen.json?text="+txt,
                 cache: false,
                 success: function(html){
                     alert(html);
-                    $("#qrpng").html('<img border=0 style="display:block; margin:auto;padding-top:10px" src="'+html+'" alt="QR Code" />');
+                    $("#qrpng").html('<div>QR Code for <b>'+html.text+'</b></div><img border=0 style="display:block; margin:auto;padding-top:10px" src="'+html.urlQr+'" alt="QR Code for '+html.text+'" />');
                 }
             });
         }
