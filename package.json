@@ -1,0 +1,23 @@
+{
+  "name": "qrcodegen",
+  "version": "1.0.0",
+  "description": "Openwhisk code for qrcode generation",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deb007/qrcode.git"
+  },
+  "author": "Debjyoti Aich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deb007/qrcode/issues"
+  },
+  "homepage": "https://github.com/deb007/qrcode#readme",
+  "dependencies": {
+    "qrcode": "^1.2.0"
+  }
+}
