@@ -44,7 +44,7 @@
     <main role="main" class="container">
       <h1 class="mt-5">Generate QR Code</h1>
       
-      <form class="form-inline mt-2 mt-md-0">
+      <form id="f1" class="form-inline mt-2 mt-md-0">
         <input style="width:85%;" class="form-control mr-sm-2" id="qrtxt" type="text" placeholder="Enter text for QR Code" aria-label="Enter text for QR Code">
         <button class="btn btn-outline-success my-2 my-sm-0" id="btn" type="button">Submit</button>
       </form>
@@ -65,15 +65,14 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
     <script>
     var last = undefined;
-
-    $( "#btn" ).click(function() {
-        var txt = $("#qrtxt").val().trim()
+    function genQr() {
+        var txt = $("#qrtxt").val().trim();
         if (last != txt) {
            last = txt;
            
@@ -81,13 +80,19 @@
                 url: "https://openwhisk.ng.bluemix.net/api/v1/web/aich30%40gmail.com_main/default/qrgen.json?text="+txt,
                 cache: false,
                 success: function(html){
-                    alert(html);
-                    $("#qrpng").html('<div>QR Code for <b>'+html.text+'</b></div><img border=0 style="display:block; margin:auto;padding-top:10px" src="'+html.urlQr+'" alt="QR Code for '+html.text+'" />');
+                    $("#qrpng").html('<div>QR Code for <b>'+html.text+'</b></div><img border=0 style="display:block; margin:auto;padding-top:10px; width: 50%;" src="'+html.urlQr+'" alt="QR Code for '+html.text+'" />');
                 }
             });
         }
         return false;
-        
+    }
+
+    $( "#btn" ).click(function() {
+        genQr();
+    });
+    $( "#f1" ).submit(function(event) {
+        genQr();
+        event.preventDefault();
     });
     </script>
   </body>
