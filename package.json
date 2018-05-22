@@ -2,10 +2,11 @@
   "name": "qrcodegen",
   "version": "1.0.0",
   "description": "Openwhisk code for qrcode generation",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config webpack.config.js",
+    "deploy": "bx wsk action update qrgen dist/bundle.js --kind nodejs:8"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,9 @@
   "homepage": "https://github.com/deb007/qrcode#readme",
   "dependencies": {
     "qrcode": "^1.2.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3"
   }
 }

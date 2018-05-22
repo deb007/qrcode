@@ -13,4 +13,4 @@ function generateQRCode(params) {
     })
 }
 
-exports.main = generateQRCode;
+global.main = generateQRCode;
