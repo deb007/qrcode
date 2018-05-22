@@ -77,7 +77,7 @@
            last = txt;
            
             $.ajax({
-                url: "https://openwhisk.ng.bluemix.net/api/v1/web/aich30%40gmail.com_main/default/qrgen.json?text="+txt,
+                url: "https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/a542a7ea7141eb3718bec704b4d7a5108ffb2232f66cea12ed6751aa4b337e77/qrcode/create?text="+txt,
                 cache: false,
                 success: function(html){
                     $("#qrpng").html('<div>QR Code for <b>'+html.text+'</b></div><img border=0 style="display:block; margin:auto;padding-top:10px; width: 50%;" src="'+html.urlQr+'" alt="QR Code for '+html.text+'" />');
